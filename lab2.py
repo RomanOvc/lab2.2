@@ -36,19 +36,18 @@ print(files_preview)
 
 
 def str_p(s1, s2):
-    return s1 + "," + s2
+    return s1 + ", " + s2
 
 
 # aa = input("введите строку: ")
-# bb = aa.split(", ")
-# print(bb)
+# bb = aa.split(",")
 #
+# print(roots)
+# roots.clear()
 # for b in bb:
-#     if b in roots:
-#         print(b)
-#     else:
-#         print("n")
-
+#     roots.append(b)
+#
+# print(roots)
 
 while True:
     a = input("введите пользователя:")
@@ -64,7 +63,8 @@ while True:
                                 print(key)
                                 for vals1 in vals:
                                     print(vals1)
-
+    elif a == 'quit':
+        break
     while True:
         b = input("Жду указаний:")
         if b == 'read' or b == 'write' or b == 'super' or b == 'grant':
@@ -84,25 +84,22 @@ while True:
                                             elif rootos1 == 'grant':
                                                 aa = input("какому пользователю передать права текущего объекта? ")
                                                 bb = input("какие права?")
-                                                cc = bb.split(", ")
+                                                cc = bb.split(",")
                                                 for keyys1, valls1 in dict.items(files_preview):
                                                     if c == keyys1:
                                                         for y in valls1:
                                                             for usors, rootos in dict.items(y):
-                                                                if aa == usors:
-                                                                    print(usors)
-                                                                    if bb in roots:
-                                                                        if bb == 'grant' or bb == 'read' or\
-                                                                                bb == 'write':
-                                                                            rootos.clear()
-                                                                            rootos.append(bb)
-                                                                            print("права переданы")
-                                                                            print(rootos)
-                                                                        else:
-                                                                            print("недостаточно прав")
-                                                                    else:
-                                                                        print("такие права невозможно передать")
+                                                                if aa == usors and 'super' not in rootos:
 
+                                                                    if 'super' in cc:
+                                                                        print("недостаточно прав")
+                                                                        break
+                                                                    if all((lambda r: r in roots)(r) for r in cc):
+                                                                        rootos.clear()
+                                                                        rootos.extend(cc)
+                                                                        print("права добавлены")
+                                                                    else:
+                                                                        print("таких прав нет")
                                             elif rootos1 == 'super':
                                                 aa = input("какому пользователю назначить права над текущим объектом? ")
                                                 bb = input("какие права? ")
@@ -112,21 +109,14 @@ while True:
                                                         for y in valls1:
                                                             for usors, rootos in dict.items(y):
                                                                 if aa == usors:
-                                                                    print(usors)
-                                                                    if bb in roots:
-                                                                        if bb != 'super':
-                                                                            rootos.clear()
-                                                                            rootos.append(bb)
-                                                                            print("права переданы")
-                                                                            print(rootos)
-                                                                        else:
-                                                                            print("таких прав нет")
+                                                                    if all((lambda r: r in roots)(r) for r in cc):
+                                                                        rootos.clear()
+                                                                        rootos.extend(cc)
+                                                                        print("права добавлены")
                                                                     else:
-                                                                        print("такие права невозможно передать")
-
-
+                                                                        print("таких прав нет")
                                         else:
-                                            print("этот пользователь в данном ")
+                                            print("этот пользователь в данном объекте не имеет таких прав ")
                                             break
 
                     # else:
@@ -135,7 +125,7 @@ while True:
 
         elif b == 'quit':
             break
-    break
+
             #          else:
             #             print("n")
             #             # for keyys1, valls1 in dict.items(files_preview):
