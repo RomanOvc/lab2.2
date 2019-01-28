@@ -39,16 +39,6 @@ def str_p(s1, s2):
     return s1 + ", " + s2
 
 
-# aa = input("введите строку: ")
-# bb = aa.split(",")
-#
-# print(roots)
-# roots.clear()
-# for b in bb:
-#     roots.append(b)
-#
-# print(roots)
-
 while True:
     a = input("введите пользователя:")
     if a != 'quit':
@@ -90,7 +80,6 @@ while True:
                                                         for y in valls1:
                                                             for usors, rootos in dict.items(y):
                                                                 if aa == usors and 'super' not in rootos:
-
                                                                     if 'super' in cc:
                                                                         print("недостаточно прав")
                                                                         break
@@ -118,36 +107,8 @@ while True:
                                         else:
                                             print("этот пользователь в данном объекте не имеет таких прав ")
                                             break
-
-                    # else:
-                    #     print("у этого пользователя нет таких прав над текущим объектом. Повторите попытку")
-                    #     break
-
         elif b == 'quit':
             break
 
-            #          else:
-            #             print("n")
-            #             # for keyys1, valls1 in dict.items(files_preview):
-            #             #     print(keyys1)
-            #             #     for y in valls1:
-            #             #         if c == keyys1:
-            #             #             for keyys2, valls2 in dict.items(y):
-            #             #                 if a == keyys2:
-            #             #                     if b == valls2:
-            #             #                         if valls2 == 'read' or valls2 == 'write':
-            #             #                             print("операция прошла")
-            #             #                         elif valls2 == 'grant' or valls2 == 'super':
-            #             #                             d = input("")
-            #
-            #                             #
-            #                             #     else:
-            #                             #         print("операция не прошла")
-            #                             #
-            #                             # break
-            #
-            #
-            #
-            #     elif b == 'quit':
-            #         break
+
 
