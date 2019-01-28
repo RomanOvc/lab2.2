@@ -1,38 +1,19 @@
 import random
 
-import time
-from itertools import count
-
-print("Вариант 12")
-
-
-# def gen_code():
-#     abc = "qwertyuiop[]as34567890dfghjklzxcvbnm,./1234567890-=QWERTYUIOP{}ASDFG34567890HJKL:ZXCVBNM"
-#     password = ""
-#     for i in range(10):
-#         password += abc[random.randint(0, len(abc))]
-#     print(password)
-#
-# gen_code()
-# print("////////////////////////////////////////////")
-
 
 def easy_pass(n_pass):
     str = ""
     n = 0
-
     while n < n_pass:
         list1 = []
         s1 = random.randint(97, 122)
         s2 = random.randint(65, 90)
         s3 = random.randint(33, 39)
         s4 = random.randint(48, 57)
-
         list1.append(chr(s1))
         list1.append(chr(s2))
         list1.append(chr(s3))
         list1.append(chr(s4))
-
         str += random.choice(list1)
         n += 1
     return str
@@ -72,26 +53,18 @@ def power_pass(check2, n_pass1):
     return check2 ** n_pass1
 
 
-
-
 if __name__ == "__main__":
-
-    while True:
-        num_pass = random.randint(0,10)
-        lol = int(num_pass)
-        kek = easy_pass(lol)
-        pepe = bust(kek)
-        sk = down_border()
-        sp = power_pass(pepe, num_pass)
-        if  sk <= sp:
-            print("пароль устойчив. количество символов в пароле {1}",num_pass)
-        else:
-            print("пароль не устойчив. количество символов в пароле {1}", num_pass)
-        # print(sp)
-        # print(sk)
-        # print(kek)
-        # print(pepe)
-
-
-
-
+    print("Вариант 12")
+    num_pass = random.randint(0, 10)
+    lol = int(num_pass)
+    kek = easy_pass(lol)
+    pepe = bust(kek)
+    sk = down_border()
+    sp = power_pass(pepe, num_pass)
+    print("Сгенерированный пароль: ", kek)
+    print("Нижняя граница числа всевозможных паролей: ", sk)
+    print("Сила словаря для пароля: ", sp)
+    if sk <= sp:
+        print("Пароль устойчив. Количество символов в пароле ", num_pass)
+    else:
+        print("Пароль не устойчив. Количество символов в пароле ", num_pass)
